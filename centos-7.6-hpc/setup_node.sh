@@ -23,6 +23,6 @@ export GCC=/opt/gcc-8.2.0/bin/gcc
 ./install_mpi.sh
 
 # Setup environment modules for MPI libraries
-mkdir -p /usr/share/Modules/modulefiles/mpi/
-cp ./modulefiles/mpi/* /usr/share/Modules/modulefiles/mpi/
+#mkdir -p /usr/share/Modules/modulefiles/mpi/
+#cp ./modulefiles/mpi/* /usr/share/Modules/modulefiles/mpi/
 
