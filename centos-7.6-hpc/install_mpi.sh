@@ -48,7 +48,7 @@ cd ..
 # Intel MPI 2018 (update 4)
 CFG="IntelMPI-v2018.x-silent.cfg"
 wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/13651/l_mpi_2018.4.274.tgz
-wget https://raw.githubusercontent.com/szarkos/AzureBuildCentOS/master/config/azure/${CFG}
+wget https://raw.githubusercontent.com/jithinjosepkl/azhpc-images/master/config/${CFG}
 tar -xvf l_mpi_2018.4.274.tgz
 cd l_mpi_2018.4.274
 ./install.sh --silent /tmp/mpi/${CFG}
