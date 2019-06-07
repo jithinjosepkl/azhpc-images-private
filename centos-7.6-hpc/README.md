@@ -10,9 +10,9 @@ The script installs/sets up the following:
 - Setp IPoIB
 - Install gcc v8.2
 - Install MPI Libraries as modules
-  - MVAPICH2 2.3.1
-  - MPICH 3.3
   - HPC-X v2.4.1
+  - MPICH 3.3
+  - MVAPICH2 2.3.1
   - OpenMPI 4.0.1
  
  # Run scripts:
