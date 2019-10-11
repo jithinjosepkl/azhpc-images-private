@@ -11,13 +11,9 @@ cat << EOF >> /etc/security/limits.conf
 *               hard    nofile          65535
 EOF
 
-# Disable GSS proxy
-sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
-
 # Enable reclaim mode
 echo "vm.zone_reclaim_mode = 1" >> /etc/sysctl.conf
 sysctl -p
-
 
 # Configure WALinuxAgent
 sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
