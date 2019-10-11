@@ -9,9 +9,9 @@ INSTALL_PREFIX=/opt
 
 # HPC-X v2.5.0
 HPCX_VERSION="v2.5.0"
-wget http://www.mellanox.com/downloads/hpc/hpc-x/v2.6/hpcx-v2.5.0-gcc-MLNX_OFED_LINUX-4.7-1.0.0.1-redhat7.6-x86_64.tbz
+wget http://www.mellanox.com/downloads/hpc/hpc-x/v2.5/hpcx-v2.5.0-gcc-MLNX_OFED_LINUX-4.7-1.0.0.1-redhat7.6-x86_64.tbz
 tar -xvf hpcx-v2.5.0-gcc-MLNX_OFED_LINUX-4.7-1.0.0.1-redhat7.6-x86_64.tbz
-mv hpcx-v2.5.0-gcc-MLNX_OFED_LINUX-4.7-1.0.0.1-redhat7.6-x86_64 ${INSTALL_PREFIX}/hpcx-v2.5.0-gcc-MLNX_OFED_LINUX-4.7-1.0.0.1-redhat7.6-x86_64
+mv hpcx-v2.5.0-gcc-MLNX_OFED_LINUX-4.7-1.0.0.1-redhat7.6-x86_64 ${INSTALL_PREFIX}
 HPCX_PATH=${INSTALL_PREFIX}/hpcx-v2.5.0-gcc-MLNX_OFED_LINUX-4.7-1.0.0.1-redhat7.6-x86_64
 HCOLL_PATH=${HPCX_PATH}/hcoll
 UCX_PATH=${HPCX_PATH}/ucx
@@ -61,34 +61,18 @@ mkdir -p /usr/share/Modules/modulefiles/mpi/
 cat << EOF >> /usr/share/Modules/modulefiles/mpi/hpcx-${HPCX_VERSION}
 #%Module 1.0
 #
-#  HPCx $(HPCX_VERSION)
+#  HPCx
 #
 conflict        mpi
 module load /opt/hpcx-v2.5.0-gcc-MLNX_OFED_LINUX-4.7-1.0.0.1-redhat7.6-x86_64/modulefiles/hpcx
 EOF
 
-# MPICH
-cat << EOF >> /usr/share/Modules/modulefiles/mpi/mpich-${MPICH_VERSION}
-#%Module 1.0
-#
-#  MPICH ${MPICH_VERSION}
-#
-conflict        mpi
-prepend-path    PATH            /opt/mpich-${MPICH_VERSION}/bin
-prepend-path    LD_LIBRARY_PATH /opt/mpich-${MPICH_VERSION}/lib
-prepend-path    MANPATH         /opt/mpich-${MPICH_VERSION}/share/man
-setenv          MPI_BIN         /opt/mpich-${MPICH_VERSION}/bin
-setenv          MPI_INCLUDE     /opt/mpich-${MPICH_VERSION}/include
-setenv          MPI_LIB         /opt/mpich-${MPICH_VERSION}/lib
-setenv          MPI_MAN         /opt/mpich-${MPICH_VERSION}/share/man
-setenv          MPI_HOME        /opt/mpich-${MPICH_VERSION}
-EOF
 
 # MVAPICH2
 cat << EOF >> /usr/share/Modules/modulefiles/mpi/mvapich2-${MV2_VERSION}
 #%Module 1.0
 #
-#  MVAPICH2 $(MV2_VERSION)
+#  MVAPICH2
 #
 conflict        mpi
 prepend-path    PATH            /opt/mvapich2-${MV2_VERSION}/bin
@@ -105,7 +89,7 @@ EOF
 cat << EOF >> /usr/share/Modules/modulefiles/mpi/openmpi-${OMPI_VERSION}
 #%Module 1.0
 #
-#  OpenMPI ${OMPI_VERSION}
+#  OpenMPI
 #
 conflict        mpi
 prepend-path    PATH            /opt/openmpi-${OMPI_VERSION}/bin
@@ -122,7 +106,7 @@ EOF
 cat << EOF >> /usr/share/Modules/modulefiles/mpi/impi_${IMPI_VERSION}
 #%Module 1.0
 #
-#  Intel MPI ${IMPI_VERSION}
+#  Intel MPI
 #
 conflict        mpi
 prepend-path    PATH            /opt/intel/impi/${IMPI_VERSION}/intel64/bin
@@ -139,7 +123,7 @@ EOF
 cat << EOF >> /usr/share/Modules/modulefiles/mpi/impi_${IMPI_2019_VERSION}
 #%Module 1.0
 #
-#  Intel MPI ${IMPI_2019_VERSION}
+#  Intel MPI
 #
 conflict        mpi
 prepend-path    PATH            /opt/intel/impi/${IMPI_2019_VERSION}/intel64/bin
@@ -154,7 +138,6 @@ EOF
 
 # Create symlinks for modulefiles
 ls -s /usr/share/Modules/modulefiles/mpi/hpcx-${HPCX_VERSION} /usr/share/Modules/modulefiles/mpi/hpcx
-ls -s /usr/share/Modules/modulefiles/mpi/mpich-${MPICH_VERSION} /usr/share/Modules/modulefiles/mpi/mpich
 ls -s /usr/share/Modules/modulefiles/mpi/mvapich2-${MV2_VERSION} /usr/share/Modules/modulefiles/mpi/mvapich2
 ls -s /usr/share/Modules/modulefiles/mpi/openmpi-${OMPI_VERSION} /usr/share/Modules/modulefiles/mpi/openmpi
 ls -s /usr/share/Modules/modulefiles/mpi/impi_${IMPI_2019_VERSION} /usr/share/Modules/modulefiles/mpi/impi-2019
